@@ -2,6 +2,10 @@
 name = "ddns"
 version = "0.1.0"
 edition = "2021"
+authors = ["Manank Patel", "Arihant Bansal"]
+description = "A highly-available, replicated distributed DNS server"
+readme = "README.md"
+repository = "https://github.com/manank20/ddns"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
