@@ -10,3 +10,9 @@ repository = "https://github.com/manank20/ddns"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+fixed-buffer = "^0.3.1"
+multimap = "^0.8.3"
+permit = "^0.1.4"
+prob-rate-limiter = "^0.1.0" 
+
+[dev-dependencies]
