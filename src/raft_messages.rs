@@ -1,9 +1,8 @@
-use crate::Raft;
 use crate::NodeID;
+use crate::Raft;
 use crate::Store;
 
 use std::sync::Arc;
-
 
 pub struct RaftDNS {
     pub id: NodeID,

@@ -50,8 +50,10 @@ impl Network {
 
         tracing::debug!("client.post() is sent");
 
-        let res: Result<Resp, Err> =
-            resp.json().await.map_err(|e| openraft::error::RPCError::Network(NetworkError::new(&e)))?;
+        let res: Result<Resp, Err> = resp
+            .json()
+            .await
+            .map_err(|e| openraft::error::RPCError::Network(NetworkError::new(&e)))?;
 
         res.map_err(|e| openraft::error::RPCError::RemoteError(RemoteError::new(target, e)))
     }
@@ -84,17 +86,26 @@ impl RaftNetwork<TypeConfig> for NetworkConnection {
         &mut self,
         req: AppendEntriesRequest<TypeConfig>,
     ) -> Result<AppendEntriesResponse<NodeId>, typ::RPCError> {
-        self.owner.send_rpc(self.target, &self.target_node, "raft-append", req).await
+        self.owner
+            .send_rpc(self.target, &self.target_node, "raft-append", req)
+            .await
     }
 
     async fn send_install_snapshot(
         &mut self,
         req: InstallSnapshotRequest<TypeConfig>,
     ) -> Result<InstallSnapshotResponse<NodeId>, typ::RPCError<InstallSnapshotError>> {
-        self.owner.send_rpc(self.target, &self.target_node, "raft-snapshot", req).await
+        self.owner
+            .send_rpc(self.target, &self.target_node, "raft-snapshot", req)
+            .await
     }
 
-    async fn send_vote(&mut self, req: VoteRequest<NodeId>) -> Result<VoteResponse<NodeId>, typ::RPCError> {
-        self.owner.send_rpc(self.target, &self.target_node, "raft-vote", req).await
+    async fn send_vote(
+        &mut self,
+        req: VoteRequest<NodeId>,
+    ) -> Result<VoteResponse<NodeId>, typ::RPCError> {
+        self.owner
+            .send_rpc(self.target, &self.target_node, "raft-vote", req)
+            .await
     }
 }
